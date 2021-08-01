@@ -32,7 +32,16 @@ insert into Address_Book_Table values
  ----------UC7-Size of address book by City and State----------
  select count(FirstName) as NumOfContacts,State from Address_Book_Table group by State
  select count(FirstName) as NumOfContacts,City from Address_Book_Table group by City
- ----------UC7-Sort the Names by City in the Address Book Table ----------
+ ----------UC8-Sort the Names by City in the Address Book Table ----------
  select * from Address_Book_Table Where City='Gago' order by(firstName)
-
+ ----------UC9-Identify each Address Book with name and Type----------
+ insert into Address_Book_Table(FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,Email) values 
+('Monica','Geller','Marilon','Kindle','NewJersy',6789,11234567,'mon@gmail.com'),
+('Rachel','Green','Greenland','Vietnam','Mexico',6521,974650012,'rach@gmail.com')
+select * from Address_Book_Table 
+alter table Address_Book_Table add AddressBookType varchar(200)
+update Address_Book_Table set AddressBookType='Friends' where FirstName='Joey' or FirstName='Rachel'
+update Address_Book_Table set AddressBookType='Family' where FirstName='Chandler' or FirstName='Monica'
+update Address_Book_Table set AddressBookType='Profession' where FirstName='Damon'
+select * from Address_Book_Table
 
