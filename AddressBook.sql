@@ -21,6 +21,9 @@ insert into Address_Book_Table values
 ('Damon','Salvatore','MysticFalls','Gago','London',764561,47653272,'dam@gmail.com'),
 ('Joey','Tribiani','Seattle','Boredom','Canada',41365,57887482,'joey@gmail.com')
  select *from Address_Book_Table;
- ----------UC4-Insert values into the Address Book Table----------
+ ----------UC4-Edit contact details using name in Address Book Table----------
  update Address_Book_Table set ZipCode=123456,PhoneNumber=98765321 where FirstName ='Monica' 
+ select *from Address_Book_Table;
+ ----------UC5-Delete contact details using name from the Address Book Table----------
+ delete from Address_Book_Table  where FirstName ='Monica' 
  select *from Address_Book_Table;
