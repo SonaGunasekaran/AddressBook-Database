@@ -29,3 +29,6 @@ insert into Address_Book_Table values
  select *from Address_Book_Table;
  ----------UC6-Retrieve details using city or state from the Address Book Table----------
  select * from Address_Book_Table Where City='Gago' or State ='London' 
+ ----------UC7-Size of address book by City and State----------
+ select count(FirstName) as NumOfContacts,State from Address_Book_Table group by State
+ select count(FirstName) as NumOfContacts,City from Address_Book_Table group by City
