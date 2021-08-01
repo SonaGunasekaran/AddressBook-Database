@@ -46,3 +46,9 @@ update Address_Book_Table set AddressBookType='Profession' where FirstName='Damo
 select * from Address_Book_Table
 ----------UC10 Count the Contacts by AddressBook Type-----------
 select count(FirstName)as NunOfContacts,AddressBookType from Address_Book_Table group by AddressBookType
+----------UC11 add person to both Friend and Family-----------
+insert into Address_Book_Table values 
+('Chandler','Bing','Central Park','Adol','NewYork',12345,1234567,'chan@gmail.com','Friends')
+select * from Address_Book_Table
+
+
