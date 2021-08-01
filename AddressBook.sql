@@ -44,4 +44,5 @@ update Address_Book_Table set AddressBookType='Friends' where FirstName='Joey' o
 update Address_Book_Table set AddressBookType='Family' where FirstName='Chandler' or FirstName='Monica'
 update Address_Book_Table set AddressBookType='Profession' where FirstName='Damon'
 select * from Address_Book_Table
-
+----------UC10 Count the Contacts by AddressBook Type-----------
+select count(FirstName)as NunOfContacts,AddressBookType from Address_Book_Table group by AddressBookType
