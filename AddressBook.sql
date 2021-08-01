@@ -32,3 +32,7 @@ insert into Address_Book_Table values
  ----------UC7-Size of address book by City and State----------
  select count(FirstName) as NumOfContacts,State from Address_Book_Table group by State
  select count(FirstName) as NumOfContacts,City from Address_Book_Table group by City
+ ----------UC7-Sort the Names by City in the Address Book Table ----------
+ select * from Address_Book_Table Where City='Gago' order by(firstName)
+
+
