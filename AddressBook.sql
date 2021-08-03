@@ -103,4 +103,21 @@ insert into AddressBook_Type values
 (3,2),
 (2,4)
 Select * from AddressBook_Type;
+----------UC13-Ensure all retrieve queries done especially in UC 6, UC 7, UC 8 and UC 10 ----------
 
+----------UC6-Retrieve details using city or state from the AddressBook ----------
+ select * from Contacts Where City='Gago' or State ='London' 
+
+ ----------UC7-Size of address book by City and State----------
+ select count(FirstName) as NumOfContacts,State from Contacts group by State
+ select count(FirstName) as NumOfContacts,City from Contacts group by City
+
+ ----------UC8-Sort the Names by City in the Address Book ----------
+ select * from Contacts Where City='Gago' order by(firstName)
+
+ ----------UC11 Add person to both Friend and Family-----------
+select AddressBook_Name,FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,Email,ContactType_Name
+from AddressBook 
+Full JOIN Contacts on AddressBook.AddressBook_ID=Contacts.AddressBook_ID 
+Full JOIN AddressBook_Type on AddressBook_Type.Contact_ID=Contacts.Contact_ID
+Full JOIN ContactType on AddressBook_Type.ContactType_ID=ContactType.ContactType_ID
