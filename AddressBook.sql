@@ -46,9 +46,61 @@ update Address_Book_Table set AddressBookType='Profession' where FirstName='Damo
 select * from Address_Book_Table
 ----------UC10 Count the Contacts by AddressBook Type-----------
 select count(FirstName)as NunOfContacts,AddressBookType from Address_Book_Table group by AddressBookType
-----------UC11 add person to both Friend and Family-----------
+----------UC11 Add person to both Friend and Family-----------
 insert into Address_Book_Table values 
 ('Chandler','Bing','Central Park','Adol','NewYork',12345,1234567,'chan@gmail.com','Friends')
 select * from Address_Book_Table
+-----------UC12 Implement the ER Diagram for Address Book Service DB----------
+create table AddressBook
+(
+AddressBook_ID int primary key,
+AddressBook_Name varchar(100)
+)
+insert into AddressBook values (1,'Sona'),(2,'Damon');
+select*from AddressBook
 
+create table Contacts
+(
+  AddressBook_ID int,
+  Contact_Id int identity(1,1) primary key,
+  FirstName varchar(200),
+  LastName varchar(200),
+  Address varchar(200),
+  City varchar(100),
+  State varchar(100),
+  ZipCode bigint,
+  PhoneNumber bigint,
+  Email varchar(200)
+  foreign key (AddressBook_ID) references AddressBook(AddressBook_ID)
+)
+select *from Contacts
+
+insert into Contacts(AddressBook_ID,FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,Email)values
+(1,'Chandler','Bing','Central Park','Adol','NewYork',12345,1234567,'chan@gmail.com'),
+(1,'Monica','Geller','Marilon','Kindle','NewJersy',6789,11234567,'mon@gmail.com'),
+(2,'Damon','Salvatore','MysticFalls','Gago','London',764561,47653272,'dam@gmail.com'),
+(1,'Joey','Tribiani','Seattle','Boredom','Canada',41365,57887482,'joey@gmail.com'),
+(2,'Rachel','Green','Greenland','Vietnam','Mexico',6521,974650012,'rach@gmail.com')
+
+create table ContactType 
+(
+ ContactType_Id int identity (1,1) primary key,
+ ContactType_Name varchar(50),
+)
+insert into ContactType values ('Friend'),('Family'),('Profession')
+select * from ContactType
+
+create Table AddressBook_Type(
+ContactType_ID int,
+Contact_ID int,
+foreign key (ContactType_ID) references ContactType(ContactType_ID),
+foreign key (Contact_ID) references Contacts(Contact_ID)
+)
+insert into AddressBook_Type values
+(1,3),
+(1,5),
+(2,1),
+(3,2),
+(2,4)
+Select * from AddressBook_Type;
 
